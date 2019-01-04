@@ -9,4 +9,4 @@ Experimental details related to this work are given in [https://arxiv.org/abs/18
 
 At the moment the chainer version implements a 3d pooling layer, and the pytorch version a 2d pooling layer. See the PyTorch and Chainer subfolders for implementation of the pooling layer in these respective frameworks.
 
-
+WARNING: we are not actively maintaining this package. Hopefully it can be useful to some (perhaps as a starting point) but it is difficult for us to keep up with ensuring compatibility among compilers/python/pytorch versions.
