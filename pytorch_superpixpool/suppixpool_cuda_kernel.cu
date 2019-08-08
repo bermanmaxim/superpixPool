@@ -268,7 +268,10 @@ std::vector<at::Tensor> suppixpool_max_cuda_forward(
         output.data<scalar_t>()
         );
     }));
-    return {output, outIdx};
+    return {
+        output, 
+        outIdx
+    };
 }
 
 std::vector<at::Tensor> suppixpool_max_cuda_backward(

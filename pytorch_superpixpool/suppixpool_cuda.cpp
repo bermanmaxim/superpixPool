@@ -35,10 +35,10 @@ std::vector<at::Tensor> suppixpool_max_forward(
   const int batch_size = img.size(0);
   const int channels_size = img.size(1);
 
-  at::Tensor output = at::zeros(torch::CUDA(at::kInt), {batch_size, channels_size, K});
+  at::Tensor output = torch::zeros({batch_size, channels_size, K}, torch::CUDA(at::kInt));
   output = output.type_as(img);
   // torch::set_requires_grad(output, true);
-  at::Tensor outIdx = -at::ones(torch::CUDA(at::kInt), {batch_size, channels_size, K}); 
+  at::Tensor outIdx = -torch::ones({batch_size, channels_size, K}, torch::CUDA(at::kInt)); 
   return suppixpool_max_cuda_forward(img, spx_labels, output, outIdx, K);
   // return {output, outIdx};
   // return {img, spx_labels};
