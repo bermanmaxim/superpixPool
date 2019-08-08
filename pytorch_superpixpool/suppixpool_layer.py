@@ -16,6 +16,7 @@ class SupPixPoolFunction(torch.autograd.Function):
         # print("number of -1: ", indices.eq(-1).sum())
         # print indices
         # assert np.all(indices.cpu().numpy()>=0)
+
         ctx.save_for_backward(indices, img, spx, K)
         return outputs
         
@@ -44,6 +45,6 @@ class SupPixUnpool(torch.nn.Module):
     def forward(self, pooled, spx):
         outShape = pooled.size()[0:2]+spx.size()[-2:]
         out = pooled.new_zeros(outShape)
-        for batch in xrange(pooled.size()[0]):
+        for batch in range(pooled.size()[0]):
             out[batch, :, :, :] = pooled[batch, :, spx[batch,:,:]]
         return out
